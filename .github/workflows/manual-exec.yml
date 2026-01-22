@@ -5,7 +5,7 @@ on:
     inputs:
       command:
         type: choice
-        options: [plan, apply. destroy]
+        options: [plan, apply, destroy]
         required: true
 
 jobs:
