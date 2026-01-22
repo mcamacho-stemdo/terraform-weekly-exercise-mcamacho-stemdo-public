@@ -1,5 +1,5 @@
 module "vpc" {
-  source = "./modules/vpc"
+  source = "git::https://github.com/stemdo-labs/terraform-weekly-exercise-mcamacho-stemdo.git//soluciones/modulo-weekly-exercise/modules/vpc?ref=develop"
 
   project_name = var.project_name
   instances = var.instances
@@ -7,7 +7,7 @@ module "vpc" {
 }
 
 module "alb" {
-  source = "./modules/alb"
+  source = "git::https://github.com/stemdo-labs/terraform-weekly-exercise-mcamacho-stemdo.git//soluciones/modulo-weekly-exercise/modules/alb?ref=develop"
 
   project_name = var.project_name
   vpc_id = module.vpc.vpc_id
@@ -15,7 +15,7 @@ module "alb" {
 }
 
 module "ec2" {
-  source = "./modules/ec2"
+  source = "git::https://github.com/stemdo-labs/terraform-weekly-exercise-mcamacho-stemdo.git//soluciones/modulo-weekly-exercise/modules/ec2?ref=develop"
 
   project_name = var.project_name
   vpc_id = module.vpc.vpc_id
@@ -25,4 +25,5 @@ module "ec2" {
   target_group_arn = module.alb.target_group_arn
   instances = var.instances
   alb_security_group_id = module.alb.alb_security_group_id
+
 }
